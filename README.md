@@ -34,7 +34,9 @@ Use of LecturerClaim table for claim management.
 
 
 Table Schema (LecturerClaims)
+
  create table LecturerClaims(
+ 
  id int not null identity(1,1),
  username varchar(200) ,
 email VARCHAR(255)  NULL,
