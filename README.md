@@ -10,6 +10,7 @@ It includes features such as claim submission, document uploads, claim status tr
 Features
 
 
+
 Lecturer Features:
 
 Submit claims for hours worked.
@@ -91,4 +92,24 @@ Copy code
 
 
 
+Usage
 
+Lecturer Workflow:
+
+-Log in or register.
+
+-Submit claims with hours worked, rate, and description.
+
+-Attach supporting documents.
+
+-Track claim status.
+
+Program Coordinator Workflow:
+
+-Log in as a coordinator.
+
+-View all submitted claims.
+
+-Approve or reject claims with feedback.
+
+-Claim status updates automatically in the database.
