@@ -1,0 +1,39 @@
+﻿@model mecca17.Models.check_login
+
+@{
+
+    ViewData["Title"] = "Login Page";
+}
+
+<h2>Login Page  As ProgrammeCoordinator</h2>
+
+<form asp-action="login_users" method="post">
+
+    <div class="form-group">
+
+        <label asp-for="email" class="control-label"></label>
+        <input asp-for="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+
+
+
+    <label>Select Role: </label>
+    <select asp-for="role">
+        <option selected disabled>select role here</option>
+        <option value="lecturer">Lecturer</option>
+        <option value="pm">PM</option>
+    </select>
+
+    <div class="form-group">
+
+        <label asp-for="password" class="control-label"></label>
+        <input asp-for="password" class="form-control" />
+        <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Login" />
+
+</form>
+
+

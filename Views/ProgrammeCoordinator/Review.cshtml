@@ -1,0 +1,36 @@
+﻿@model mecca17.Models.get_claims
+
+
+@{
+    ViewData["Title"] = "Review Lecturer Claim";
+}
+
+<h2>Review Lecturer Claim</h2>
+
+<div>
+    <h4>Email: @Model.email[0]</h4>
+    <p><strong>Module Code:</strong> @Model.module[0]</p>
+    <p><strong>Description:</strong> @Model.description[0]</p>
+    <p><strong>Hourly Rate:</strong> R @Model.rate[0]</p>
+    <p><strong>Hours Worked:</strong> @Model.hours_worked[0]</p>
+    <p><strong>Total Amount:</strong> R @Model.total[0]</p>
+</div>
+
+<!-- Approve Form -->
+
+
+<td>
+    <form asp-action="Approves" method="post">
+        <input type="hidden" name="Ids" value="@Model.id" /> <!-- Assuming you have an Id property -->
+        <button type="submit" class="btn btn-success">Approve</button>
+    </form>
+    <form asp-action="Reject" method="post">
+        <input type="hidden" name="Ids" value="@Model.id" /> <!-- Assuming you have an Id property -->
+        <button type="submit" class="btn btn-danger">Reject</button>
+    </form>
+</td>
+<a asp-action="Claims" asp-route-id="@Model.id" class="btn btn-secondary mt-3">Back to Claims</a>
+
+
+
+   

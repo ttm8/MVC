@@ -1,0 +1,144 @@
+﻿@model mecca17.Models.get_claims
+
+@{
+    ViewData["Title"] = "Claims";
+}
+
+
+<table class="table table-bordered">
+    <h2>PROGRAMME  MANAGER / COORDINATORS PANEL </h2>
+    <h2>Claims submitted </h2>
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Email</th>
+            <th>Module</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Description</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Approve</th>
+            <th>Not Approve</th>
+            <th>File</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < (Model.email?.Count ?? 0); i++)
+        {
+            <tr>
+               
+                <td>@(Model.id?[i] ?? "N/A")</td>
+                <td>@Model.email[i]</td>
+                <td>@(Model.module?[i] ?? "N/A")</td>
+                <td>@(Model.hours_worked?[i] ?? "N/A")</td>
+                <td>@(Model.rate?[i] ?? "N/A")</td>
+                <td>@(Model.description?[i] ?? "N/A")</td>
+                <td>@(Model.total?[i] ?? "N/A")</td>
+                <td>@(Model.status?[i] ?? "N/A")</td>
+                   
+
+                
+                <td>
+                    <button class="btn btn-success" onclick="approveClaim('@Model.id[i]',this)">Approve</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" onclick="rejectClaim('@Model.id[i]', this)">Reject</button>
+                </td>
+                <td>
+                    @if (@Model.filename[i] == "N/A" || @Model.filename[i] == "none")
+                    {
+                        <span>no file</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Content("~/pdf/" + @Model.filename[i])" target="_blank">View Document</a>
+                    }
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+<div id="overlay" class="overlay" style="display:none;"></div>
+<div id="popup" class="popup" style="display:none;">
+    <div id="popup-content" class="popup-content"></div>
+    <div class="popup-buttons">
+        <button class="popup-button confirm">Confirm</button>
+        <button class="popup-button close" onclick="closePopup()">Cancel</button>
+    </div>
+</div>
+
+ 
+   <script>
+    // Function to display popup with a custom message
+    function showPopup(message, claimId, action) {
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const popupContent = document.getElementById('popup-content');
+        popupContent.innerHTML = message; // Set the message
+        popup.style.display = 'block'; // Show the popup
+        overlay.style.display = 'block'; // Show the overlay
+
+        // Attach the action to the confirm button
+        document.querySelector('.popup-button.confirm').onclick = function () {
+            updateClaimStatus(claimId, action);
+        };
+    }
+
+    // Function to close the popup
+    function closePopup() {
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        popup.style.display = 'none'; // Hide the popup
+        overlay.style.display = 'none'; // Hide the overlay
+    }
+
+    // Function to handle claim approval
+    function approveClaim(claimId) {
+        const message = `Are you sure you want to approve claim #${claimId}?`;
+        showPopup(message, claimId, 'approve');
+    }
+
+    // Function to handle claim rejection
+    function rejectClaim(claimId) {
+        const message = `Are you sure you want to reject claim #${claimId}?`;
+        showPopup(message, claimId, 'reject');
+    }
+
+    // Function to update claim status
+    function updateClaimStatus(claimId, action) {
+        const url = action === 'approve' ? '/ProgrammeCoordinator/Approves' : '/ProgrammeCoordinator/Reject';
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ Ids: claimId }) // Assuming 'Ids' is the property in your model
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert(`Claim ${action}d successfully.`);
+                    // Optionally, update the UI to reflect the change
+                    const row = document.querySelector(`tr[data-claim-id="${claimId}"]`);
+                    const statusCell = row.querySelector('.status-cell');
+                    statusCell.innerHTML = `<span style="color: ${action === 'approve' ? 'green' : 'red'};">${action === 'approve' ? 'Approved' : 'Rejected'}</span>`;
+                    closePopup(); // Close the popup
+                } else {
+                    alert('Failed to update the claim status: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the claim status.');
+            });
+    }
+    </script>
+

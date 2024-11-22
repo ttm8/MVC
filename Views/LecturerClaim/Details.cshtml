@@ -1,0 +1,71 @@
+﻿
+@model mecca17.Models.get_claims 
+
+@{
+ 
+    ViewData["Title"] = "Details";
+}
+
+<a asp-action="CreateEdit">Create New Claim</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Email</th>
+            <th>Module</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Description</th>
+            <th>Total(R)</th>
+            <th>Status</th>
+            <th>File </th>
+           
+            
+  
+             
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < (Model.email?.Count ?? 0); i++)
+        {
+            <tr>
+                <td>@(Model.id?[i] ?? "N/A")</td>
+                <td>@Model.email[i]</td>
+                <td>@(Model.module?[i] ?? "N/A")</td>
+                <td>@(Model.hours_worked?[i] ?? "N/A")</td>
+                <td>@(Model.rate?[i] ?? "N/A")</td>
+                <td>@(Model.description?[i] ?? "N/A")</td>
+                <td>@(Model.total?[i] ?? "N/A")</td>
+                <td class="status @Model.status[i]">@Model.status[i]</td>
+                <td>@Model.filename[i]</td>
+
+                <td>
+                    <a href="~/pdf/" target="_top" asp-append-version="true">View</a>
+                </td>
+               
+                    <td>
+                       
+                        
+                        <a asp-action="Delete" asp-route-id="@Model.id" class="btn btn-danger">Delete</a>
+
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+<script>
+   
+
+        // Show the popup for confirmation
+        openPopup(claimId);
+
+        const statusHeader = document.getElementById('statusHeader');
+        if (statusHeader) {
+            statusHeader.textContent = 'Status (Approved)'; // or 'Status (Rejected)'
+        }
+    }
+</script>
+
+

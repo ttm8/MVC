@@ -1,0 +1,52 @@
+﻿
+@model mecca17.Models.register
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/styles.css" />
+<h1>Register AS ProgrammeCoordinator</h1>
+
+<!---form to register--->
+<form method="post" asp-action="Register_users">
+
+
+    <div class="form-group">
+
+        <label asp-for="username" class="control-label"></label>
+        <input asp-for="username" class="form-control" />
+        <span asp-validation-for="username" class="text-danger"></span>
+    </div>
+
+
+
+    <div class="form-group">
+
+        <label asp-for="email" class="control-label"></label>
+        <input asp-for="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+
+    <label> Select role: </label>
+    <select asp-for="role">
+        <option selected disabled> select role here</option>
+        <option value="lecture"> Lecture</option>
+        <option value="pm"> PM</option>
+    </select>
+
+
+    <div class="form-group">
+
+        <label asp-for="password" class="control-label"></label>
+        <input asp-for="password" class="form-control" />
+        <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+
+
+    <input type="submit" value="register now" />
+</form>
+
+
+<br />
+<a href="/ProgrammeCoordinator/Login">Already have an account, login now</a>
