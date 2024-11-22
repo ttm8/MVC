@@ -66,6 +66,7 @@ email VARCHAR(255)  NULL,
 
  
 
+
  Technologies Used
  
 Framework: ASP.NET Core MVC
@@ -75,6 +76,17 @@ Language: C#
 Database: SQL Server
 
 Frontend: Razor Pages, HTML, CSS, Bootstrap
+
+
+
+
+
+Update the connectionString in the appsettings.json file with your database details:
+json
+Copy code
+"ConnectionStrings": {
+    "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=mecca17;Trusted_Connection=True;TrustServerCertificate=True;"
+}
 
 File Storage: Local storage for uploaded documents
 
