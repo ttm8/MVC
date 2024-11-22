@@ -77,9 +77,10 @@ Database: SQL Server
 
 Frontend: Razor Pages, HTML, CSS, Bootstrap
 
+File Storage: Local storage for uploaded documents
 
 
-
+Configure Database Connection:
 
 Update the connectionString in the appsettings.json file with your database details:
 json
@@ -88,8 +89,6 @@ Copy code
     "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=mecca17;Trusted_Connection=True;TrustServerCertificate=True;"
 }
 
-File Storage: Local storage for uploaded documents
 
 
-Installation and Setup
-Clone the Repository
+
