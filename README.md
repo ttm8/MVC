@@ -60,14 +60,24 @@ email VARCHAR(255)  NULL,
  status  varchar(200)
  )
 
+ 
+
  select * from LecturerClaims;
 
+ 
+
  Technologies Used
+ 
 Framework: ASP.NET Core MVC
+
 Language: C#
+
 Database: SQL Server
+
 Frontend: Razor Pages, HTML, CSS, Bootstrap
+
 File Storage: Local storage for uploaded documents
+
 
 Installation and Setup
 Clone the Repository
