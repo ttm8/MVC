@@ -1,20 +1,37 @@
 # mecca17
 Lecturer Claims Management System
+
 Project Description
-The Lecturer Claims Management System is a .NET Core MVC web application that allows lecturers to submit claims for approval and enables program coordinators and managers to review and process them. It includes features such as claim submission, document uploads, claim status tracking, and feedback management.
+
+The Lecturer Claims Management System is a .NET Core MVC web application that allows lecturers to submit claims for approval and enables program coordinators and managers to review and process them. 
+
+It includes features such as claim submission, document uploads, claim status tracking, and feedback management.
 
 Features
+
+
 Lecturer Features:
+
 Submit claims for hours worked.
+
 Upload supporting documents (e.g., PDFs).
+
 View claim statuses (Pending, Approved, Rejected).
+
 Coordinator/Manager Features:
+
 Review submitted claims.
+
 Approve or reject claims with feedback.
+
 Update claim statuses in real-time.
+
 Database:
+
 Store claims, documents, and feedback.
+
 Use of LecturerClaim table for claim management.
+
 
 Table Schema (LecturerClaims)
  create table LecturerClaims(
@@ -31,7 +48,7 @@ email VARCHAR(255)  NULL,
  status  varchar(200)
  )
 
- select * from LecturerClaims;
+ selectÂ *Â fromÂ LecturerClaims;
 
  Technologies Used
 Framework: ASP.NET Core MVC
