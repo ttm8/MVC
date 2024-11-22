@@ -38,15 +38,25 @@ Table Schema (LecturerClaims)
  create table LecturerClaims(
  
  id int not null identity(1,1),
+ 
  username varchar(200) ,
+ 
 email VARCHAR(255)  NULL,
+
  module  varchar(200),
+ 
  rate  varchar(200),
+ 
  hours_worked  varchar(200),
+ 
  description  varchar(500),
+ 
  total  varchar(200),
+ 
  filename  varchar(200),
+ 
  filepath  varchar(500),
+ 
  status  varchar(200)
  )
 
