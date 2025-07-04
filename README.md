@@ -11,7 +11,7 @@ Project Description
 Features
 
 
-
+--------------------------------------------------------------------------------------------------------------
 Lecturer Features:
 
 -Submit claims for hours worked.
@@ -27,6 +27,7 @@ Lecturer Features:
 -Approve or reject claims with feedback.
 
 -Update claim statuses in real-time.
+-------------------------------------------------------------------------------------------------------
 
 Database:
 
@@ -68,7 +69,7 @@ email VARCHAR(255)  NULL,
 
  
 
-
+----------------------------------------------------------------------------------------------
  Technologies Used
  
 -Framework: ASP.NET Core MVC
@@ -92,7 +93,7 @@ Copy code
 }
 
 
-
+---------------------------------------------------------------------------------------------------------------
 Usage
 
 Lecturer Workflow:
@@ -115,7 +116,7 @@ Program Coordinator Workflow:
 
 -Claim status updates automatically in the database.
 
-
+---------------------------------------------------------------------------------------------------------------------
 Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
