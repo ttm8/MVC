@@ -1,4 +1,5 @@
-# mecca17
+# Lecturer Claims Management System
+
 Lecturer Claims Management System
 
 Project Description
